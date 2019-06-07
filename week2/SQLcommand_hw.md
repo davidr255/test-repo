@@ -45,13 +45,18 @@ SELECT last_visit FROM users ORDER BY last_visit DESC LIMIT 5;
 
 ##### Who was the first visitor?
 
-2013-10-08|Woodrow Duffy
+sqlite> SELECT id,name FROM users ORDER BY id ASC limit 5;
+ │1|Fletcher Haney
+ │2|Sydney Moore
+ │3|Melisa Pitts
+ │4|Shayla Woods
+ │5|Abraham Zuniga
 
 
 ##### Who has an email address with the domain 'horse.edu'?
 
-sqlite> SELECT name,email FROM users WHERE email LIKE '%horse.edu%';
-Fern Byers|lino.jarod@hornhorse.edu
+sqlite> SELECT name,email FROM users WHERE email LIKE '%@horse.edu%';
+
 Valentine Gonzales|steve.louis.jeremy@horse.edu
 
 ##### How many people are from the city Graford?
@@ -116,7 +121,16 @@ ball|Dennis Velazquez|2014-08-22
 
 ##### What was the most frequently used search term by people from Idaho?
 
+This should show ascending list of searched terms by count (not modified by state)
+sqlite> SELECT term_id, COUNT(*) as term_id FROM user_searches GROUP BY term_id ORDER BY COUNT(*) ASC;
 
+For Idaho, display counts and searches:
+SELECT term_id,users.state,search_terms.word, COUNT(), COUNT() as term_id FROM user_searches JOIN users ON user_searches.user_id=users.id 
+JOIN search_terms ON user_searches.term_id=search_terms.id WHERE users.state='ID' GROUP BY term_id ORDER BY COUNT(*) ASC;
+
+For Idaho, count only:
+SELECT search_terms.word, COUNT(search_terms.word) FROM search_terms JOIN user_searches ON search_terms.id = user_searches.term_id 
+JOIN users ON user_searches.user_id = users.id WHERE users.state = 'ID' ORDER BY COUNT(search_terms.word);
 
 
 ##### What is the name of user 391, and what are his search terms?

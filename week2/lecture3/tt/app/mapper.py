@@ -37,7 +37,6 @@ if __name__ == '__main__':
 				sku INTEGER
 			);'''
 			)
-		d.cursor.execute(
-			'''ADD COLUMN {
+		d.cursor.execute('INSERT INTO stock_keeping_units VALUES (1,11,22);')
 	print('outside of with block')
 	
