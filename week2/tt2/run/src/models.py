@@ -20,7 +20,6 @@ class Schema:
 	def lookup(self,company):
 		api = Schema.lookup_api()
 		query = api + company
-		# print(query)
 		return json.loads(requests.get(query).text)[0]['Symbol']
 
 	def quote(self,symbol):
