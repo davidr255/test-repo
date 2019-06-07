@@ -31,23 +31,4 @@ class Database:
 
 
 if __name__ == '__main__':
-	with Database() as db:
-		db.cursor.execute(
-			'''DROP TABLE IF EXISTS users;'''
-		)
-		db.cursor.execute(
-			'''CREATE TABLE users (
-			   pk INTEGER PRIMARY KEY AUTOINCREMENT,
-			   username VARCHAR,
-			   password VARCHR
-		);'''
-		)
-		db.cursor.execute(
-			'''INSERT INTO users( 
-				username,
-				password
-			   ) VALUES(
-				?,
-				?
-			   );''',('david','password'))
-			   
+	Database().create_table('user_info')
