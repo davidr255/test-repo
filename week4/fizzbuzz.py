@@ -14,11 +14,11 @@ class Fizzbuzzer:
         elif self.number % 3 == 0:
             return "fizz"
         else:   
-            return self.number
+            return str(self.number)
 
-buzzer = Fizzbuzzer(11)
-print(buzzer.next())
-print(buzzer.next())
-print(buzzer.next())
-print(buzzer.next())
-print(buzzer.next())
+# buzzer = Fizzbuzzer(11)
+# print(buzzer.next())
+# print(buzzer.next())
+# print(buzzer.next())
+# print(buzzer.next())
+# print(buzzer.next())
